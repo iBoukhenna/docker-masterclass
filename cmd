@@ -44,3 +44,14 @@ docker inspect website
 docker logs user-api
 docker logs -f website
 
+docker build -t name .
+
+docker network connect card-generator-backend-main_default frontend_cvlj
+
+docker inspect --format='{{json .NetworkSettings.Networks}}' postgres_cvlj
+
+docker network disconnect card-generator-frontend_default frontend_cvlj
+
+docker-compose build
+
+docker-compose up -d
