@@ -55,3 +55,26 @@ docker network disconnect card-generator-frontend_default frontend_cvlj
 docker-compose build
 
 docker-compose up -d
+
+
+docker exec -u 0 -it mysql.localhost /bin/bash
+
+yum update
+apt-get update
+
+yum install vim-enhanced -y
+yum install nano -y
+yum install vim-minimal -y
+or
+dnf install vim-enhanced -y
+dnf install nano -y
+dnf install vim-minimal -y
+
+
+apt-get install vim
+apt-get install nano
+
+nano /etc/mysql/mysql.conf.d/mysqld.cnf
+sql_mode        = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+
+docker save -o fedora-all.tar fedora
