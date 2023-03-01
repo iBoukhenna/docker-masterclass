@@ -1,0 +1,29 @@
+version: '3.1'
+services:
+  postgres.service:
+    image: postgres
+    container_name: postgres.container
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+  spring.service:
+    image: spring.image
+    container_name: spring.container
+    restart: unless-stopped
+    depends_on:
+      - postgres.service
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./resources:/resources
+  react.service:
+    image: react.image
+    container_name: react.container
+    restart: unless-stopped
+    depends_on:
+      - spring.service
+    ports:
+      - "3000:3000"

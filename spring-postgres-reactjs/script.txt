@@ -1,0 +1,4 @@
+
+docker build --tag react-image:latest .
+docker build --tag spring-image:latest .
+docker run -dp 3000:3000 docker:latest
