@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  postgres.service:
+    image: postgres
+    container_name: postgres.container
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+networks:
+  postgres.service:
+    name: postgres_default
